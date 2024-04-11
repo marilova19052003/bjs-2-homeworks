@@ -6,7 +6,7 @@ function getArrayParams(...numbers) {
   const min = Math.min(...numbers);
   const max = Math.max(...numbers);
   const sum = numbers.reduce((acc, num) => acc + num, 0);
-  const avg = +(sum / numbers.length).toFixed(2); 
+  const avg = Math.round((sum / numbers.length) * 100) / 100; 
 
   return { min, max, avg };
 }
