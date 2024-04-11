@@ -1,6 +1,6 @@
 function getArrayParams(...arr) {
   if (arr.length === 0) {
-      return { min: undefined, max: undefined, avg: undefined };
+return {min: undefined, max: undefined, avg: undefined} ;
   }
 
   let min = arr[0];
@@ -83,44 +83,21 @@ console.log(differenceEvenOddWorker(15, 97, 85, 64, 67, 10, 69, 40, 15, 35));
 console.log(averageEvenElementsWorker(1, 2, 3, 4, 5, 6, 7, 8, 9)); 
 console.log(averageEvenElementsWorker(15, 97, 85, 64, 67, 10, 69, 40, 15, 35)); 
 
+function makeWork(arrOfArr, func) {
+  let maxWorkerResult = -Infinity;
 
-
-
-function makeWork(...functions) {
-  return function(...args) {
-      const results = functions.map(func => func(...args));
-      return {
-          sum: results[0],
-          diffMaxMin: results[1],
-          diffEvenOdd: results[2],
-          avgEven: results[3]
-      };
+  for (let data of arrOfArr) {
+      const result = func(...data);
+      if (result > maxWorkerResult) {
+          maxWorkerResult = result;
+      }
   }
+
+  return maxWorkerResult;
 }
 
-function summElementsWorker(...arr) {
-  return arr.reduce((acc, curr) => acc + curr, 0);
-}
-
-function differenceMaxMinWorker(...arr) {
-  const max = Math.max(...arr);
-  const min = Math.min(...arr);
-  return max - min;
-}
-
-function differenceEvenOddWorker(...arr) {
-  const sumEven = arr.filter(num => num % 2 === 0).reduce((acc, curr) => acc + curr, 0);
-  const sumOdd = arr.filter(num => num % 2 !== 0).reduce((acc, curr) => acc + curr, 0);
-  return Math.abs(sumEven - sumOdd);
-}
-
-function averageEvenElementsWorker(...arr) {
-  const evenNums = arr.filter(num => num % 2 === 0);
-  if (evenNums.length === 0) return 0;
-  const sum = evenNums.reduce((acc, curr) => acc + curr, 0);
-  return sum / evenNums.length;
-}
-
-const worker = makeWork(summElementsWorker, differenceMaxMinWorker, differenceEvenOddWorker, averageEvenElementsWorker);
-
-console.log(worker(1, 2, 3, 4, 5)); 
+const arr = [[10, 10, 11, 20, 10], [67, 10, 2, 39, 88], [72, 75, 51, 87, 43], [30, 41, 55, 96, 62]];
+console.log(makeWork(arr, summElementsWorker)); 
+console.log(makeWork(arr, differenceMaxMinWorker)); 
+console.log(makeWork(arr, differenceEvenOddWorker)); 
+console.log(makeWork(arr, averageEvenElementsWorker)); 
