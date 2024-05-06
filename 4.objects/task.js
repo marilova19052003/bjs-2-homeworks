@@ -26,12 +26,6 @@ function Student(name, gender, age) {
 
    
     Student.prototype.exclude = function(reason) {
-        delete this.subject;
-        delete this.marks;
-        this.excluded = reason;
-    };
-    
-    Student.prototype.exclude = function(reason) {
         this.subject = '';
         this.marks = [];
         this.excluded = reason;
@@ -49,4 +43,3 @@ let student2 = new Student("Артём", "мужской", 25);
 student2.setSubject("Geometry");
 student2.exclude('плохая учёба');
 console.log(student2);
-
