@@ -5,17 +5,17 @@ function Student(name, gender, age) {
     this.marks = [];
     this.subject = '';
 
-    // Метод для установки предмета
+    
     Student.prototype.setSubject = function(subjectName) {
         this.subject = subjectName;
     };
 
-    // Метод для добавления оценок
+    
     Student.prototype.addMarks = function(...marksToAdd) {
         this.marks.push(...marksToAdd);
     };
 
-    // Метод для вычисления среднего балла
+   
     Student.prototype.getAverage = function() {
         if (!this.marks || this.marks.length === 0) {
             return 0;
@@ -24,10 +24,16 @@ function Student(name, gender, age) {
         return sum / this.marks.length;
     };
 
-    // Метод для исключения студента
+   
     Student.prototype.exclude = function(reason) {
         delete this.subject;
         delete this.marks;
+        this.excluded = reason;
+    };
+    
+    Student.prototype.exclude = function(reason) {
+        this.subject = '';
+        this.marks = [];
         this.excluded = reason;
     };
 }
