@@ -11,14 +11,24 @@ function Student(name, gender, age) {
 
     
     Student.prototype.getAverage = function() {
-        return 0; // Возвращаем 0, так как нет оценок
+        return 0; 
     };
 
-    
     Student.prototype.exclude = function(reason) {
         this.subject = '';
+        this.marks = []; 
         this.excluded = reason;
     };
+
+    Student.prototype.addMark = function(mark) {
+        if (!this.subject || this.excluded) {
+            console.log("Студент не может получать оценки.");
+            return;
+        }
+        
+        this.marks.push(mark);
+    };
+    
 }
 
 let student1 = new Student("Василиса", "женский", 19);
