@@ -7,7 +7,6 @@ function Student(name) {
 Student.prototype.exclude = function(reason) {
     if (!this.excluded) {
         delete this.subject;
-        delete this.marks;
         this.excluded = reason;
     }
 };
