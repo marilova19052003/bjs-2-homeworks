@@ -20,14 +20,7 @@ function Student(name, gender, age) {
         this.excluded = reason;
     };
 
-    Student.prototype.addMark = function(mark) {
-        if (!this.subject || this.excluded) {
-            console.log("Студент не может получать оценки.");
-            return;
-        }
-        
-        this.marks.push(mark);
-    };
+   
     
 }
 
