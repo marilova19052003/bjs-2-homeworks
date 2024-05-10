@@ -35,7 +35,7 @@ function Student(name, gender, age) {
 let student1 = new Student("Василиса", "женский", 19);
 student1.setSubject("Algebra");
 console.log(student1.getAverage()); // 0
-student1.addMarks(4, 5, 4, 5);
+student1.add(4, 5, 4, 5);
 console.log(student1.getAverage()); // 4.5
 console.log(student1);
 
