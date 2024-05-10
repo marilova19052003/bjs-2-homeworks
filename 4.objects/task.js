@@ -5,8 +5,11 @@ function Student(name) {
 }
 
 Student.prototype.exclude = function(reason) {
-    delete this.subject;
-    this.excluded = reason;
+    if (!this.excluded) {
+        delete this.subject;
+        delete this.marks;
+        this.excluded = reason;
+    }
 };
 
 Student.prototype.getAverage = function(marks) {
@@ -25,4 +28,5 @@ const aliceMarks = [4, 5, 3];
 const bobMarks = [5, 5, 4];
 
 console.log(student1.getAverage(aliceMarks)); // Выведет средний балл для Алисы
-console.log(student2.getAverage(bobMarks)); // Выведет средний балл для Боба
+student1.exclude('Poor attendance');
+console.log(student1.getAverage([5, 4])); // Выведет 0, так как студент 
