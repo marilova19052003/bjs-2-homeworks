@@ -1,3 +1,4 @@
+const book1 = new Book("Book1", "2020-01-01", 200, "Author1");
 class PrintEditionItem {
     constructor(name, releaseDate, pagesCount) {
       this.name = name;
@@ -32,7 +33,10 @@ class PrintEditionItem {
       this.type = "magazine";
     }
   }
-  
+  const library = new Library("My Library");
+library.addBook(magazine1);
+library.addBook(book1);
+
   class Book extends PrintEditionItem {
     constructor(name, releaseDate, pagesCount, author) {
       super(name, releaseDate, pagesCount);
@@ -62,14 +66,6 @@ class PrintEditionItem {
       return null;
     }
   } 
-  const book1 = new Book("Book1", "2020-01-01", 200, "Author1");
-
-// Создаем библиотеку и добавляем книги
-const library = new Library("My Library");
-library.addBook(magazine1);
-library.addBook(book1);
-
-// Поиск книги по атрибуту
-const foundBook = library.findBookBy("author", "Author1");
+  const foundBook = library.findBookBy("author", "Author1");
 
 console.log(foundBook);
