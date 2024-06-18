@@ -43,32 +43,65 @@ class PrintEditionItem {
   
   class Library {
     constructor(name) {
-      this.name = name;
-      this.books = [];
+        this.name = name;
+        this.books = [];
     }
-  
+
     addBook(book) {
-      if (book.state > 30) {
-        this.books.push(book);
-      }
-    }
-  
-    findBookBy(type, value) {
-      for (let book of this.books) {
-        if (book[type] === value) {
-          return book;
+        if (book.state > 30) {
+            this.books.push(book);
         }
-      }
-      return null;
     }
-  }
-  
-  const magazine1 = new Magazine("Magazine1", "2021-01-01", 100);
-  const book1 = new Book("Book1", "2020-01-01", 200, "Author1");
-  
-  const library = new Library("My Library");
-  library.addBook(magazine1);
-  library.addBook(book1);
-  
-  const foundBook = library.findBookBy("author", "Author1");
-  console.log(foundBook);
+
+    findBookBy(type, value) {
+        return this.books.find(book => book[type] === value) || null;
+    }
+
+    giveBookByName(bookName) {
+        const index = this.books.findIndex(book => book.name === bookName);
+        if (index !== -1) {
+            const book = this.books[index];
+            this.books.splice(index, 1);
+            return book;
+        } else {
+            return null;
+        }
+    }
+}
+
+
+const library = new Library("Библиотека имени Ленина");
+
+library.addBook(
+    new DetectiveBook(
+        "Артур Конан Дойл",
+        "Полное собрание повестей и рассказов о Шерлоке Холмсе в одном томе",
+        2019,
+        1008
+    )
+);
+library.addBook(
+    new FantasticBook(
+        "Аркадий и Борис Стругацкие",
+        "Пикник на обочине",
+        1972,
+        168
+    )
+);
+library.addBook(new NovelBook("Герберт Уэллс", "Машина времени", 1895, 138));
+library.addBook(new Magazine("Мурзилка", 1924, 60));
+
+console.log(library.findBookBy("name", "Властелин колец")); 
+console.log(library.findBookBy("releaseDate", 1924).name); 
+
+console.log("Количество книг до выдачи: " + library.books.length); 
+const issuedBook = library.giveBookByName("Машина времени");
+console.log("Количество книг после выдачи: " + library.books.length); 
+
+
+issuedBook.state = 20;
+
+
+library.addBook(issuedBook);
+
+console.log("Количество книг после возвращения: " + library.books.length); 
