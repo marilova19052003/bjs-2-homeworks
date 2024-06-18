@@ -1,64 +1,44 @@
-class PrintEditionItem {
-    constructor(name, releaseDate, pagesCount) {
-      this.name = name;
-      this.releaseDate = releaseDate;
-      this.pagesCount = pagesCount;
-      this.state = 100;
-      this.type = null;
-    }
-  
-    fix() {
-      this.state *= 1.5;
-    }
-  
-    set state(newState) {
-      if (newState < 0) {
-        this._state = 0;
-      } else if (newState > 100) {
-        this._state = 100;
-      } else {
-        this._state = newState;
-      }
-    }
-  
-    get state() {
-      return this._state;
-    }
-  }
-  
-  class Magazine extends PrintEditionItem {
-    constructor(name, releaseDate, pagesCount) {
-      super(name, releaseDate, pagesCount);
-      this.type = "magazine";
-    }
-  }
-  
-  class Book extends PrintEditionItem {
-    constructor(name, releaseDate, pagesCount, author) {
-      super(name, releaseDate, pagesCount);
-      this.type = "book";
+class PrintPublication {
+    constructor(title, author, year) {
+      this.title = title;
       this.author = author;
+      this.year = year;
+    }
+  }
+  
+  class Book extends PrintPublication {
+    constructor(title, author, year, genre) {
+      super(title, author, year);
+      this.genre = genre;
+    }
+  }
+  
+  class Magazine extends PrintPublication {
+    constructor(title, author, year, category) {
+      super(title, author, year);
+      this.category = category;
     }
   }
   
   class Library {
-    constructor(name) {
-      this.name = name;
+    constructor() {
       this.books = [];
+      this.magazines = [];
     }
   
     addBook(book) {
-      if (book.state > 30) {
-        this.books.push(book);
-      }
+      this.books.push(book);
     }
   
-    findBookBy(type, value) {
-      for (let book of this.books) {
-        if (book[type] === value) {
-          return book;
-        }
-      }
-      return null;
+    addMagazine(magazine) {
+      this.magazines.push(magazine);
     }
-  } 
+  }
+  
+  // Пример использования:
+  const library = new Library();
+  const book1 = new Book("Преступление и наказание", "Федор Достоевский", 1866, "роман");
+  const magazine1 = new Magazine("National Geographic", "Various", 1888, "наука");
+  
+  library.addBook(book1);
+  library.addMagazine(magazine1);
