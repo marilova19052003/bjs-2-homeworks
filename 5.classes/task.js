@@ -1,3 +1,4 @@
+const book1 = new Book("Book1", "2020-01-01", 200, "Author1");
 class PrintEditionItem {
     constructor(name, releaseDate, pagesCount) {
       this.name = name;
@@ -13,26 +14,29 @@ class PrintEditionItem {
   
     set state(newState) {
       if (newState < 0) {
-        this.state = 0;
+        this._state = 0;
       } else if (newState > 100) {
-        this.state = 100;
+        this._state = 100;
       } else {
-        this.state = newState;
+        this._state = newState;
       }
     }
   
     get state() {
-      return this.state;
+      return this._state;
     }
   }
-  
+
   class Magazine extends PrintEditionItem {
     constructor(name, releaseDate, pagesCount) {
       super(name, releaseDate, pagesCount);
       this.type = "magazine";
     }
   }
-  
+  const library = new Library("My Library");
+library.addBook(magazine1);
+library.addBook(book1);
+
   class Book extends PrintEditionItem {
     constructor(name, releaseDate, pagesCount, author) {
       super(name, releaseDate, pagesCount);
@@ -61,14 +65,7 @@ class PrintEditionItem {
       }
       return null;
     }
-  }
-  
-  const magazine1 = new Magazine("Magazine1", "2021-01-01", 100);
-  const book1 = new Book("Book1", "2020-01-01", 200, "Author1");
-  
-  const library = new Library("My Library");
-  library.addBook(magazine1);
-  library.addBook(book1);
-  
+  } 
   const foundBook = library.findBookBy("author", "Author1");
-  console.log(foundBook);
+
+console.log(foundBook);
