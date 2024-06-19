@@ -73,13 +73,14 @@ class PrintEditionItem {
 const library = new Library("Библиотека имени Ленина");
 
 library.addBook(
-    new DetectiveBook(
-        "Артур Конан Дойл",
-        "Полное собрание повестей и рассказов о Шерлоке Холмсе в одном томе",
-        2019,
-        1008
-    )
+new DetectiveBook (
+    "Артур Конан Дойл",
+    "Полное собрание повестей и рассказов о Шерлоке Холмсе в одном томе",
+    2019,
+    1008
+)
 );
+
 library.addBook(
     new FantasticBook(
         "Аркадий и Борис Стругацкие",
