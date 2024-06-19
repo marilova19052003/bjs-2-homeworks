@@ -40,6 +40,27 @@ class PrintEditionItem {
       this.author = author;
     }
   }
+
+  class DetectiveBook extends Book {
+    constructor(author, name, releaseDate, pagesCount) {
+        super(name, releaseDate, pagesCount, author);
+        this.type = "detective";
+    }
+}
+
+class FantasticBook extends Book {
+    constructor(author, name, releaseDate, pagesCount) {
+        super(name, releaseDate, pagesCount, author);
+        this.type = "fantastic";
+    }
+}
+
+class NovelBook extends Book {
+    constructor(author, name, releaseDate, pagesCount) {
+        super(name, releaseDate, pagesCount, author);
+        this.type = "novel";
+    }
+}
   
   class Library {
     constructor(name) {
@@ -73,12 +94,12 @@ class PrintEditionItem {
 const library = new Library("Библиотека имени Ленина");
 
 library.addBook(
-new DetectiveBook (
-    "Артур Конан Дойл",
-    "Полное собрание повестей и рассказов о Шерлоке Холмсе в одном томе",
-    2019,
-    1008
-)
+    new DetectiveBook (
+        "Артур Конан Дойл",
+        "Полное собрание повестей и рассказов о Шерлоке Холмсе в одном томе",
+        2019,
+        1008
+    )
 );
 
 library.addBook(
@@ -89,6 +110,7 @@ library.addBook(
         168
     )
 );
+
 library.addBook(new NovelBook("Герберт Уэллс", "Машина времени", 1895, 138));
 library.addBook(new Magazine("Мурзилка", 1924, 60));
 
