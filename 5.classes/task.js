@@ -75,7 +75,8 @@ class NovelBook extends Book {
     }
 
     findBookBy(type, value) {
-        return this.books.find(book => book[type] === value) || null;
+        const foundBook = this.books.find(book => book[type] === value);
+        return foundBook !== undefined ? foundBook : null;
     }
 
     giveBookByName(bookName) {
