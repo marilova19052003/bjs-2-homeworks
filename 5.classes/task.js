@@ -24,24 +24,24 @@ class PrintEditionItem {
     get state() {
       return this._state;
     }
-  }
-  
-  class Magazine extends PrintEditionItem {
+}
+
+class Magazine extends PrintEditionItem {
     constructor(name, releaseDate, pagesCount) {
       super(name, releaseDate, pagesCount);
       this.type = "magazine";
     }
-  }
-  
-  class Book extends PrintEditionItem {
+}
+
+class Book extends PrintEditionItem {
     constructor(name, releaseDate, pagesCount, author) {
       super(name, releaseDate, pagesCount);
       this.type = "book";
       this.author = author;
     }
-  }
+}
 
-  class DetectiveBook extends Book {
+class DetectiveBook extends Book {
     constructor(author, name, releaseDate, pagesCount) {
         super(name, releaseDate, pagesCount, author);
         this.type = "detective";
@@ -61,8 +61,8 @@ class NovelBook extends Book {
         this.type = "novel";
     }
 }
-  
-  class Library {
+
+class Library {
     constructor(name) {
         this.name = name;
         this.books = [];
@@ -90,7 +90,6 @@ class NovelBook extends Book {
         }
     }
 }
-
 
 const library = new Library("Библиотека имени Ленина");
 
@@ -122,9 +121,7 @@ console.log("Количество книг до выдачи: " + library.books.
 const issuedBook = library.giveBookByName("Машина времени");
 console.log("Количество книг после выдачи: " + library.books.length); 
 
-
 issuedBook.state = 20;
-
 
 library.addBook(issuedBook);
 
