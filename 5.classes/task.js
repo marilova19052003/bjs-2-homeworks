@@ -1,5 +1,5 @@
 class PrintEditionItem {
-    constructor( name, releaseDate, pagesCount) {
+    constructor( author, name, releaseDate, pagesCount) {
       this.name = name;
       this.releaseDate = releaseDate;
       this.pagesCount = pagesCount;
@@ -27,8 +27,8 @@ class PrintEditionItem {
 }
 
 class Magazine extends PrintEditionItem {
-    constructor(name, releaseDate, pagesCount) {
-      super(name, releaseDate, pagesCount);
+    constructor( author, name, releaseDate, pagesCount) {
+      super(author, name, releaseDate, pagesCount);
       this.type = "magazine";
     }
 }
