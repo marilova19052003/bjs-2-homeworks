@@ -1,5 +1,5 @@
 class PrintEditionItem {
-    constructor( author, name, releaseDate, pagesCount) {
+    constructor( name, releaseDate, pagesCount) {
       this.name = name;
       this.releaseDate = releaseDate;
       this.pagesCount = pagesCount;
