@@ -13,10 +13,10 @@
       return error;
     }
   }
-
+  
   class Triangle {
     constructor(a, b, c) {
-      if (a + b <= c || a + c <= b || b + c <= a) {
+      if (a + b <= c || a + c <= b || b + c <= a || a <= 0 || b <= 0 || c <= 0) {
         throw new Error("Треугольник с такими сторонами не существует");
       }
       this.a = a;
@@ -31,7 +31,7 @@
     get area() {
       const p = this.perimeter / 2;
       const area = Math.sqrt(p * (p - this.a) * (p - this.b) * (p - this.c));
-      return area.toFixed(3);
+      return area;
     }
   }
   
