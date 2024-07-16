@@ -10,7 +10,7 @@ function validateCount(value) {
   try {
     return parseCount(value);
   } catch (error) {
-    return new Error("Невалидное значение");
+    throw new Error("Невалидное значение");
   }
 }
 
@@ -33,7 +33,7 @@ class Triangle {
 
   get area() {
     if (!this.a || !this.b || !this.c) {
-      return "неправильное значение";
+      return "Ошибка! Треугольник не существует";
     }
     const p = this.perimeter / 2;
     const area = Math.sqrt(p * (p - this.a) * (p - this.b) * (p - this.c));
