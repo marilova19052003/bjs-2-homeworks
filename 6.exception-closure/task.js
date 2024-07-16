@@ -33,7 +33,7 @@ class Triangle {
 
   get area() {
     if (!this.a || !this.b || !this.c) {
-      return "Ошибка! Треугольник не существует";
+      return "неправильное значение";
     }
     const p = this.perimeter / 2;
     const area = Math.sqrt(p * (p - this.a) * (p - this.b) * (p - this.c));
