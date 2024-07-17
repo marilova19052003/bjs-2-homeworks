@@ -17,7 +17,7 @@ function validateCount(value) {
 class Triangle {
   constructor(a, b, c) {
     if (a + b <= c || a + c <= b || b + c <= a) {
-      throw new Error("Треугольник с такими сторонами не существует");
+      return new Error("Треугольник с такими сторонами не существует");
     }
     this.a = a;
     this.b = b;
