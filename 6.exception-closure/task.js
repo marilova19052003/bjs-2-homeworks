@@ -10,7 +10,7 @@ function validateCount(value) {
   try {
     return parseCount(value);
   } catch (error) {
-    console.log(error);
+    return error; // Возвращаем ошибку
   }
 }
 
@@ -25,19 +25,13 @@ class Triangle {
   }
 
   get perimeter() {
-    if (!this.a || !this.b || !this.c) {
-      return "Ошибка! Треугольник не существует";
-    }
-    return this.a + this.b + this.c;
+    return this.a + this.b + this.c; // Убрана валидация
   }
 
   get area() {
-    if (!this.a || !this.b || !this.c) {
-      return "Ошибка! Треугольник не существует";
-    }
     const p = this.perimeter / 2;
     const area = Math.sqrt(p * (p - this.a) * (p - this.b) * (p - this.c));
-    return +area.toFixed(3);
+    return +area.toFixed(3); // Убрана валидация
   }
 }
 
